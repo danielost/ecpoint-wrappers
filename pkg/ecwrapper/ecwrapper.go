@@ -31,3 +31,8 @@ func (ec *ECWrapper) Add(point1, point2 *ECPoint) *ECPoint {
 	params := ec.Params()
 	return NewECPoint(params.Add(point1.X, point1.Y, point2.X, point2.Y))
 }
+
+func (ec *ECWrapper) Double(point *ECPoint) *ECPoint {
+	params := ec.Params()
+	return NewECPoint(params.Double(point.X, point.Y))
+}
