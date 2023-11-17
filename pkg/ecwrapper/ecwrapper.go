@@ -24,15 +24,17 @@ func (ec *ECWrapper) GetBasePointG() *ECPoint {
 
 func (ec *ECWrapper) IsOnCurve(point *ECPoint) bool {
 	params := ec.Params()
-	return params.IsOnCurve(point.X, point.Y)
+	return params.IsOnCurve(point.Params())
 }
 
 func (ec *ECWrapper) Add(point1, point2 *ECPoint) *ECPoint {
 	params := ec.Params()
-	return NewECPoint(params.Add(point1.X, point1.Y, point2.X, point2.Y))
+	x1, y1 := point1.Params()
+	x2, y2 := point2.Params()
+	return NewECPoint(params.Add(x1, y1, x2, y2))
 }
 
 func (ec *ECWrapper) Double(point *ECPoint) *ECPoint {
 	params := ec.Params()
-	return NewECPoint(params.Double(point.X, point.Y))
+	return NewECPoint(params.Double(point.Params()))
 }

@@ -6,16 +6,20 @@ import (
 )
 
 type ECPoint struct {
-	X, Y *big.Int
+	x, y *big.Int
 }
 
 func NewECPoint(x, y *big.Int) *ECPoint {
 	return &ECPoint{
-		X: x,
-		Y: y,
+		x: x,
+		y: y,
 	}
 }
 
+func (ecp *ECPoint) Params() (*big.Int, *big.Int) {
+	return ecp.x, ecp.y
+}
+
 func (ecp *ECPoint) Print(base int) {
-	fmt.Printf("X:%s\nY:%s\n", ecp.X.Text(base), ecp.Y.Text(base))
+	fmt.Printf("X:%s\nY:%s\n", ecp.x.Text(base), ecp.y.Text(base))
 }
