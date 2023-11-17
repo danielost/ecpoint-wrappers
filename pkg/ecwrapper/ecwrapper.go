@@ -1,6 +1,9 @@
 package ecwrapper
 
-import "crypto/elliptic"
+import (
+	"crypto/elliptic"
+	"math/big"
+)
 
 type ECWrapper struct {
 	curve elliptic.Curve
@@ -37,4 +40,10 @@ func (ec *ECWrapper) Add(point1, point2 *ECPoint) *ECPoint {
 func (ec *ECWrapper) Double(point *ECPoint) *ECPoint {
 	params := ec.Params()
 	return NewECPoint(params.Double(point.Params()))
+}
+
+func (ec *ECWrapper) ScalarMult(k *big.Int, point *ECPoint) *ECPoint {
+	params := ec.Params()
+	x, y := point.Params()
+	return NewECPoint(params.ScalarMult(x, y, k.Bytes()))
 }
