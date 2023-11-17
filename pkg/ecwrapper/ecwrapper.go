@@ -26,3 +26,8 @@ func (ec *ECWrapper) IsOnCurve(point *ECPoint) bool {
 	params := ec.Params()
 	return params.IsOnCurve(point.X, point.Y)
 }
+
+func (ec *ECWrapper) Add(point1, point2 *ECPoint) *ECPoint {
+	params := ec.Params()
+	return NewECPoint(params.Add(point1.X, point1.Y, point2.X, point2.Y))
+}
