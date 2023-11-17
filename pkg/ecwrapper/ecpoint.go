@@ -25,6 +25,12 @@ func (ecp *ECPoint) Print(base int) {
 	fmt.Printf("X:%s\nY:%s\n", ecp.x.Text(base), ecp.y.Text(base))
 }
 
+func (ecp *ECPoint) IsEqual(other *ECPoint) bool {
+	x1, y1 := ecp.Params()
+	x2, y2 := other.Params()
+	return x1.Cmp(x2) == 0 && y1.Cmp(y2) == 0
+}
+
 func ECPointToString(point *ECPoint, base int) string {
 	x, y := point.Params()
 	return x.Text(base) + ":" + y.Text(base)
