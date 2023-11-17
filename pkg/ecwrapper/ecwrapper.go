@@ -21,3 +21,8 @@ func (ec *ECWrapper) GetBasePointG() *ECPoint {
 	Gx, Gy := params.Gx, params.Gy
 	return NewECPoint(Gx, Gy)
 }
+
+func (ec *ECWrapper) IsOnCurve(point *ECPoint) bool {
+	params := ec.Params()
+	return params.IsOnCurve(point.X, point.Y)
+}
