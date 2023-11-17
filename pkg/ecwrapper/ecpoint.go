@@ -1,4 +1,4 @@
-package elliptic
+package ecwrapper
 
 import (
 	"fmt"
