@@ -6,7 +6,7 @@ Wrappers for operations on elliptic curves in Golang. Task №7 for the Cryptogr
 
 Execute the following command first:
 ```bash
-github.com/danielost/ecpoint-wrappers
+go get github.com/danielost/ecpoint-wrappers
 ```
 Then simply add the following import to your Go code:
 ```bash
