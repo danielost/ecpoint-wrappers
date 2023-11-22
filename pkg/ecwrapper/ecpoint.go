@@ -49,7 +49,7 @@ func StringToECPoint(s string, base int) (*ECPoint, error) {
 		return nil, fmt.Errorf("wrong number of parameters expected=%d got=%d", 2, len(params))
 	}
 
-	var x, y *big.Int
+	x, y := &big.Int{}, &big.Int{}
 
 	// Convert string values to big.Int for x coordinate.
 	x, ok := x.SetString(params[0], base)
